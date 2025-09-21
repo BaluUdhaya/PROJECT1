@@ -23,7 +23,7 @@ jobs:
              port: 22
              connect_timeout: 10s
              first_ssh: |
-                 curl -l -u admin:Root123$ http://localhost:8080/job/deploy_jenkinsfile_demo/build?token=token_balu
+                 sudo curl -l -u admin:Root123$ http://localhost:8080/job/deploy_jenkinsfile_demo/build?token=token_balu
         - name: list the files
           run: |
             cd ./target
