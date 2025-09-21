@@ -14,7 +14,17 @@ jobs:
            distribution: 'temurin'
            java-version: '21'
            cache: 'maven'
-        - name: package the code
-          run: mvn package
-        - name: test the code
-          run: mvn test
+        - name: run the piprline from the lab
+          uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+          with:
+             host: 65.2.36.121
+             user: labuser
+             pass: Nuvelabs123$
+             port: 22
+             connect_timeout: 10s
+             first_ssh: |
+                 curl -l -u admin:Root123$ http://localhost:8080/job/deploy_jenkinsfile_demo/build?token=token_balu
+        - name: list the files
+          run: |
+            cd ./target
+            ls -l
