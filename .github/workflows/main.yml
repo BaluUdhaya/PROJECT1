@@ -1,0 +1,20 @@
+name: project1
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  myfirstjob_cicd:
+     runs-on: ubuntu-latest
+     steps:
+        - name: checkout code
+          uses: actions/checkout@v5
+        - name: setup java with maven
+          uses: actions/setup-java@v5
+          with:
+           distribution: 'temurin'
+           java-version: '21'
+           cache: 'maven'
+        - name: package the code
+          run: mvn package
+        - name: test the code
+          run: mvn test
